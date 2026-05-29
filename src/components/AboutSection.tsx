@@ -141,9 +141,9 @@ const AboutChapter04: React.FC = () => {
       {/* Label */}
       <div ref={lineRef} style={lineStyles} className="flex items-center gap-3 mb-4">
         <div className="w-8 h-[1px]" style={{ background: 'linear-gradient(to right, #34d399, transparent)' }} />
-        <span ref={labelRef} style={labelStyles}
+        <span ref={labelRef}
           className="text-[10px] uppercase tracking-[0.22em] font-semibold"
-          style={{ color: '#34d399' }}>
+          style={{ ...labelStyles, color: '#34d399' }}>
           Experience
         </span>
       </div>
@@ -257,17 +257,18 @@ const AboutChapter05: React.FC = () => {
       {/* Label */}
       <div ref={lineRef} style={lineStyles} className="flex items-center gap-3 mb-5">
         <div className="w-8 h-[1px]" style={{ background: 'rgba(255,255,255,0.25)' }} />
-        <span ref={labelRef} style={labelStyles}
+        <span ref={labelRef}
           className="text-xs uppercase tracking-[0.22em] font-semibold"
-          style={{ color: 'rgba(255,255,255,0.45)' }}>
+          style={{ ...labelStyles, color: 'rgba(255,255,255,0.45)' }}>
           Education
         </span>
       </div>
 
       {/* Degree badge */}
-      <div ref={badgeRef} style={badgeStyles}
+      <div ref={badgeRef}
         className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full"
         style={{
+          ...badgeStyles,
           border: '1px solid rgba(255,255,255,0.1)',
           background: 'rgba(255,255,255,0.03)',
         }}>

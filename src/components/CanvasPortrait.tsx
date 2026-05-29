@@ -7,10 +7,6 @@ interface CanvasPortraitProps {
 const TOTAL_FRAMES = 240
 const FRAME_DIR = '/ezgif-45ef1810f8fc4ec0-jpg'
 
-// Throttle frame updates for better scroll performance
-// Only redraw when frame changes by more than this threshold
-const FRAME_SKIP_THRESHOLD = 2
-
 export const CanvasPortrait: React.FC<CanvasPortraitProps> = ({ progress }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const imagesRef = useRef<HTMLImageElement[]>([])
