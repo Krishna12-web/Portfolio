@@ -11,19 +11,52 @@ interface HomeSectionProps {
 export const HomeSection: React.FC<HomeSectionProps> = ({ progress, onNavigate }) => {
   const projects = [
     {
-      title: 'JARVIS-like Virtual Assistant',
-      tech: 'Python · AI/ML · NLP',
-      desc: 'An advanced AI-powered virtual assistant with natural language processing capabilities, voice recognition, and smart home integration.'
+      title: 'NeuroVessel',
+      tech: 'Python · PyTorch · Healthcare AI',
+      desc: 'Developed a machine learning-based healthcare solution for neurovascular image analysis. Built data preprocessing pipelines, trained ML models, and analyzed medical imaging data to support automated blood vessel assessment and healthcare research.',
+      category: 'AI & ML'
     },
     {
-      title: 'Real-time Emotion Detection',
-      tech: 'TensorFlow · OpenCV · Deep Learning',
-      desc: 'A sophisticated emotion recognition system that analyzes facial expressions in real-time for mental health and UX applications.'
+      title: 'Sahayak AI',
+      tech: 'Gemini API · Firebase · Cloud',
+      desc: 'Built an AI-powered teaching assistant for multi-grade and low-resource classrooms. The system provides personalized learning support using Generative AI, Google Gemini, Firebase, and cloud technologies.',
+      category: 'AI & ML'
     },
     {
-      title: 'AI-Powered Teaching Tools',
-      tech: 'React Native · Firebase · ML',
-      desc: 'Educational platform for multi-grade classrooms with personalized learning paths and adaptive content delivery.'
+      title: 'JARVIS Virtual Assistant',
+      tech: 'Python · NLP · Automation',
+      desc: 'Created a Python-based intelligent virtual assistant capable of speech recognition, face recognition, browser automation, email management, and system control through voice commands.',
+      category: 'AI & ML'
+    },
+    {
+      title: 'Emotional Companion AI',
+      tech: 'Python · Deep Learning · CV',
+      desc: 'Developed an AI companion that detects emotions from voice, text, and facial expressions and responds with personalized, empathetic interactions through an animated avatar and memory system.',
+      category: 'AI & ML'
+    },
+    {
+      title: 'AI Chatbot Application',
+      tech: 'Java · Python · Conversational AI',
+      desc: 'Built a cross-platform AI chatbot using Java and Python with voice input capabilities and AI-powered conversational features for mobile and desktop environments.',
+      category: 'AI & ML'
+    },
+    {
+      title: 'Lunar DEM Generation System',
+      tech: 'Computer Vision · AI · Space Tech',
+      desc: 'Designed an AI and computer vision solution to generate high-resolution Digital Elevation Models (DEMs) from single lunar images, focusing on lunar terrain reconstruction and space technology applications.',
+      category: 'AI & ML'
+    },
+    {
+      title: 'Food Delivery Ecosystem',
+      tech: 'React Native · Firebase · WebSockets',
+      desc: 'Developed three React Native applications for customers, vendors, and delivery partners, enabling food ordering, order management, delivery tracking, and real-time communication.',
+      category: 'Web & Mobile'
+    },
+    {
+      title: 'AUREN Premium Brand Website',
+      tech: 'Vite · CSS Animations · Premium UX',
+      desc: 'Designed and developed a premium cold coffee brand website featuring cinematic animations, immersive storytelling, and high-end user experience using advanced frontend technologies.',
+      category: 'Web & Mobile'
     }
   ]
 
@@ -125,33 +158,56 @@ interface Project {
   title: string
   tech: string
   desc: string
+  category: string
 }
 
 const ProjectsContent: React.FC<{ projects: Project[] }> = ({ projects }) => {
+  const [activeCategory, setActiveCategory] = React.useState<string>('All')
   const [titleRef, titleStyles] = useScrollReveal({ direction: 'up', delay: 0.05, distance: 20 })
   const [descRef, descStyles] = useScrollReveal({ direction: 'up', delay: 0.1, distance: 20 })
   const [gridRef, gridStyles] = useScrollReveal({ direction: 'up', delay: 0.15, distance: 25 })
 
+  const filteredProjects = activeCategory === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === activeCategory)
+
   return (
     <section className="min-h-screen w-full flex flex-col items-center justify-center px-6 md:px-12 py-20 relative">
-      <div className="w-full max-w-4xl">
-        <div ref={titleRef} style={titleStyles} className="flex items-center gap-3 mb-4 md:text-center lg:text-left">
+      <div className="w-full max-w-6xl">
+        <div ref={titleRef} style={titleStyles} className="flex items-center gap-3 mb-4 justify-center md:justify-start">
           <div className="w-12 h-[1px] bg-gradient-to-r from-violet-500 to-transparent" />
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
             Selected Works
           </h2>
         </div>
-        <p ref={descRef} style={descStyles} className="text-white/60 text-base md:text-lg mb-12 md:text-center lg:text-left max-w-2xl">
+        <p ref={descRef} style={descStyles} className="text-white/60 text-base md:text-lg mb-10 text-center md:text-left max-w-2xl">
           Projects focused on performance, design, and usability. Built with real-world production standards.
         </p>
 
-        <div ref={gridRef} style={gridStyles} className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          {projects.map((proj, index) => (
+        {/* Premium custom glassmorphic category selector */}
+        <div className="flex gap-3 mb-10 overflow-x-auto pb-2 justify-center md:justify-start scrollbar-none">
+          {['All', 'AI & ML', 'Web & Mobile'].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border cursor-pointer select-none whitespace-nowrap ${
+                activeCategory === cat
+                  ? 'bg-violet-600 border-violet-500 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]'
+                  : 'bg-white/5 border-white/5 text-white/55 hover:bg-white/10 hover:text-white/80'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div ref={gridRef} style={gridStyles} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+          {filteredProjects.map((proj, index) => (
             <div 
-              key={index}
-              className="glass-card p-6 md:p-8 rounded-2xl border border-white/10 hover:border-pink-500/30 flex flex-col justify-between h-auto md:h-[240px] transition-all duration-300 group cursor-pointer shimmer-hover"
+              key={proj.title}
+              className="glass-card p-6 md:p-8 rounded-2xl border border-white/10 hover:border-pink-500/30 flex flex-col justify-between h-[280px] transition-all duration-300 group cursor-pointer shimmer-hover"
               style={{
-                transitionDelay: `${index * 100}ms`
+                transitionDelay: `${(index % 3) * 100}ms`
               }}
             >
               <div>
@@ -159,10 +215,10 @@ const ProjectsContent: React.FC<{ projects: Project[] }> = ({ projects }) => {
                   <span className="text-[10px] tracking-widest text-pink-400 uppercase font-mono whitespace-nowrap group-hover:text-pink-300 transition-colors">{proj.tech}</span>
                   <Terminal className="w-4 h-4 text-white/30 group-hover:text-pink-400 transition-colors flex-shrink-0" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-pink-300 transition-colors">{proj.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed line-clamp-3">{proj.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors leading-snug">{proj.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed line-clamp-4">{proj.desc}</p>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-pink-400 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="mt-4 flex items-center gap-2 text-pink-400 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <span>View Project</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </div>

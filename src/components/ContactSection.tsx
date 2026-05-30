@@ -61,7 +61,7 @@ export const ContactSection: React.FC = () => {
               <span className="text-white/80 text-sm">LinkedIn Profile</span>
             </a>
             <a
-              href="https://krishna-saini-qsou58o.gamma.site/"
+              href="https://krishna-saini-portfolio.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card p-6 rounded-2xl border border-white/10 hover:border-blue-500/20 transition-all group"

@@ -103,9 +103,13 @@ const AboutChapter03: React.FC = () => {
   const [labelRef, labelStyles] = useScrollReveal({ direction: 'left', delay: 0.05, distance: 20 })
   const [subtitleRef, subtitleStyles] = useScrollReveal({ direction: 'up', delay: 0.1, distance: 20 })
   const [point1Ref, point1Styles] = useScrollReveal({ direction: 'right', delay: 0.15, distance: 20 })
-  const [point2Ref, point2Styles] = useScrollReveal({ direction: 'right', delay: 0.2, distance: 20 })
-  const [point3Ref, point3Styles] = useScrollReveal({ direction: 'right', delay: 0.25, distance: 20 })
-  const [point4Ref, point4Styles] = useScrollReveal({ direction: 'right', delay: 0.3, distance: 20 })
+  const [point2Ref, point2Styles] = useScrollReveal({ direction: 'right', delay: 0.18, distance: 20 })
+  const [point3Ref, point3Styles] = useScrollReveal({ direction: 'right', delay: 0.21, distance: 20 })
+  const [point4Ref, point4Styles] = useScrollReveal({ direction: 'right', delay: 0.24, distance: 20 })
+  const [point5Ref, point5Styles] = useScrollReveal({ direction: 'right', delay: 0.27, distance: 20 })
+  const [point6Ref, point6Styles] = useScrollReveal({ direction: 'right', delay: 0.30, distance: 20 })
+  const [point7Ref, point7Styles] = useScrollReveal({ direction: 'right', delay: 0.33, distance: 20 })
+  const [point8Ref, point8Styles] = useScrollReveal({ direction: 'right', delay: 0.36, distance: 20 })
 
   return (
     <div className="max-w-4xl">
@@ -116,11 +120,15 @@ const AboutChapter03: React.FC = () => {
       <p ref={subtitleRef} style={subtitleStyles} className="text-white/50 text-lg md:text-2xl font-light mb-8">
         Real-world impact through innovation.
       </p>
-      <div className="flex flex-col gap-4 text-lg md:text-2xl font-semibold tracking-tight text-white/90">
-        <p ref={point1Ref} style={point1Styles}>• JARVIS-like Virtual Assistant with NLP &amp; voice recognition</p>
-        <p ref={point2Ref} style={point2Styles}>• Real-time Emotion Detection for mental health applications</p>
-        <p ref={point3Ref} style={point3Styles}>• AI-Powered Teaching Tools for multi-grade classrooms</p>
-        <p ref={point4Ref} style={point4Styles}>• Lunar DEM Generation research surpassing NASA/ISRO solutions</p>
+      <div className="flex flex-col gap-4 text-base md:text-xl font-semibold tracking-tight text-white/90">
+        <p ref={point1Ref} style={point1Styles}>• NeuroVessel: Healthcare AI platform for neurovascular image assessment</p>
+        <p ref={point2Ref} style={point2Styles}>• Sahayak AI: Teaching assistant using Google Gemini &amp; Firebase for low-resource classrooms</p>
+        <p ref={point3Ref} style={point3Styles}>• JARVIS Virtual Assistant: Python assistant with NLP, speech &amp; face recognition</p>
+        <p ref={point4Ref} style={point4Styles}>• Emotional Companion AI: Empathetic avatar detecting emotions from facial &amp; vocal inputs</p>
+        <p ref={point5Ref} style={point5Styles}>• AI Chatbot Application: Cross-platform voice-enabled mobile &amp; desktop chatbot</p>
+        <p ref={point6Ref} style={point6Styles}>• Lunar DEM Generation: Space tech solution generating high-res lunar terrain models</p>
+        <p ref={point7Ref} style={point7Styles}>• Food Delivery Ecosystem: Suite of 3 React Native apps with real-time order tracking</p>
+        <p ref={point8Ref} style={point8Styles}>• AUREN Premium Brand Website: High-end storefront website with cinematic storytelling</p>
       </div>
     </div>
   )
