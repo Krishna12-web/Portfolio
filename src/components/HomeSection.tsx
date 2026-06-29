@@ -288,7 +288,7 @@ const CTAContent: React.FC<{ onNavigate: (tab: string) => void }> = ({ onNavigat
             <Send className="w-4 h-4" />
           </button>
           <a
-            href="/Krishna%20Saini%20Resume2.pdf"
+            href="/Krishna%20Saini%20Resume2%20(1).pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-xl glass-card text-sm font-semibold text-white flex items-center justify-center gap-2 border border-white/10 hover:border-violet-500/30 hover:text-violet-300 active:scale-95 transition-all whitespace-nowrap shimmer-hover"
